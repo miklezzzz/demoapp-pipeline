@@ -27,15 +27,27 @@ pipeline {
     }
 
     stage('Deploy Staging') {
-      steps {
-        echo 'Deploy to staging environment'
-        input 'Ok to deploy to production?'
+      parallel {
+        stage('Deploy Staging') {
+          steps {
+            echo 'Deploy to staging environment'
+            input 'Ok to deploy to production?'
+          }
+        }
+
+        stage('') {
+          steps {
+            echo 'Abr'
+          }
+        }
+
       }
     }
 
     stage('Deploy Production') {
       steps {
         echo 'Deploy to Production'
+        sh 'java -version'
       }
     }
 
