@@ -35,7 +35,7 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             echo 'Abr'
           }
@@ -51,6 +51,9 @@ pipeline {
       }
     }
 
+  }
+  tools {
+    jdk 'java11'
   }
   post {
     always {
